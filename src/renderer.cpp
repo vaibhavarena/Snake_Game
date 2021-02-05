@@ -41,11 +41,9 @@ Renderer::~Renderer() {
 
 void Renderer::renderBackground()
 {
-  _mutex.lock();
   // Clear screen
   SDL_SetRenderDrawColor(sdl_renderer, 0x1E, 0x1E, 0x1E, 0xFF);
   SDL_RenderClear(sdl_renderer);
-  _mutex.unlock();
 }
 
 void Renderer::renderFood(SDL_Point const &food, SDL_Rect &block)

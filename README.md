@@ -2,22 +2,27 @@
 
 The final project for Udacity CPP Nanodegree. The starter repo has been provided with a working game and further additions have been made to show understanding of various C++ concepts.
 
-## Changes
-1. <b>Change 1:</b>  In main.cpp, the user has been given the choice to enter the grid size which in turn will automatically modify the width and height of the display window.
 
-2. <b>Change 2:</b>  The default code has some member variables of class Snake as public members, the variables have been changed to private except Direction(to reduce unnecessary complexity) and getters and setters have been implemented accordingly.
-
-3. <b>Change 3:</b>  In renderer.h and renderer.cpp, functions for rendering background, food and snake has been divided into seperate functions to enhance code readability.
-
-4. <b>Change 4:</b>  Use concurrency to execute the below functions(Minor changes in cmake file to include pthread). Although not required in such a small project, the idea has been taken from very large games, where there is priority based loading, the objects close to camera and the player character are loaded first and then the far away objects and textures.
-
-5. <b>Change 5:</b>  In renderer.cpp, the dimensions of snake body has been modified to modify visual appearance in gameplay.
-
-6. <b>Change 6:</b>  A count variable has been declared in snake.h and used in game.cpp to increase speed after 5 food pick ups.
+## Rubric criteria fulfilled
+Many functionalities as specified in rubric has already been implemented in starter code. So, only the changes fulfilling the rubric criteria have been discussed below.
+### Loop, functions & I/O
+1. <b>Input</b> In main.cpp, line 14, the user has to input the grid size which in turn make display area smaller or larger.
+2. <b>Condition</b>In game.cpp, line 85, and if loop is used which enforces the increase in speed after five turns only.
+3. <b>Function</b>In renderer.cpp, line 96-98, three sepearte functions for rendering different objects have been defined to reduce complexity.
+### Object Oriented Programming
+1. <b>Access Specifier</b> In snake.h, from line 36-41, the members were public, has now been made private.
+2. <b>Encapsulation</b> In snake.h, from line 26-31, getters and setters have been declared and defined in snake.cpp to access and set state of private member variables of snake class.
+### Memory Management
+1. <b>Pass by reference</b> 
+  *In renderer.h, line 13, the constructor takes arguments as references.
+  *In renderer.h, line 19, function renderFood() arguments as references.
+### Concurrency
+1. <b>Multi threading</b> In renderer.cpp, line 96-98, three async tasks have been defined.
+2. <b>Future</b> In renderer.cpp, line 96-98, future has been used to implement wait mechanism
+3. <b>Mutex and lock</b>In renderer.cpp, line 53, 64, mutex.lock() has been, without which concurrent access to block variable was creating bugs.
 
 ## Minor changes
 1.  CMakeLists.txt has been modified to compile code with pthread.
-2.  In renderer.h and renderer.cpp, the constructor arguments have been changed to references to prevent making object copies for function.
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
