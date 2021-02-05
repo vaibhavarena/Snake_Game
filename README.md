@@ -1,19 +1,19 @@
 # CPPND: Capstone Snake Game Example
 
-The final project for Udacity Nanodegree. The starter repo has been provided with a working game and further additions have been made to show understanding of various C++ concepts.
+The final project for Udacity CPP Nanodegree. The starter repo has been provided with a working game and further additions have been made to show understanding of various C++ concepts.
 
 ## Changes
-1. Change 1:  In main.cpp, the user has been given the choice to enter the grid size which in turn will automatically modify the width and height of the display window.
+1. <b>Change 1:</b>  In main.cpp, the user has been given the choice to enter the grid size which in turn will automatically modify the width and height of the display window.
 
-2. Change 2:  The default code has some member variables of class Snake as public members, the variables have been changed to private except Direction(to reduce unnecessary complexity) and getters and setters have been implemented accordingly.
+2. <b>Change 2:</b>  The default code has some member variables of class Snake as public members, the variables have been changed to private except Direction(to reduce unnecessary complexity) and getters and setters have been implemented accordingly.
 
-3. Change 3:  In renderer.h and renderer.cpp, rendering background, food and snake has been divided into seperate functions to enhance code readability.
+3. <b>Change 3:</b>  In renderer.h and renderer.cpp, functions for rendering background, food and snake has been divided into seperate functions to enhance code readability.
 
-4. Change 4:  Use concurrency to execute the below functions(Minor changes in cmake file to include pthread). Although not required in such a small project, the idea has been taken from very large games, where there is priority based loading, the close objects and the player character are loaded first and then the far away objects and textures. Similarly, here the background will complete rendering first and then food and snake.
+4. <b>Change 4:</b>  Use concurrency to execute the below functions(Minor changes in cmake file to include pthread). Although not required in such a small project, the idea has been taken from very large games, where there is priority based loading, the objects close to camera and the player character are loaded first and then the far away objects and textures.
 
-5. Change 5:  In renderer.cpp, the dimensions of snake body has been modified to modify visual appearance in gameplay.
+5. <b>Change 5:</b>  In renderer.cpp, the dimensions of snake body has been modified to modify visual appearance in gameplay.
 
-6. Change 6:  A count variable has been declared in snake.h and used in game.cpp to increase speed after 5 food pick ups.
+6. <b>Change 6:</b>  A count variable has been declared in snake.h and used in game.cpp to increase speed after 5 food pick ups.
 
 ## Minor changes
 1.  CMakeLists.txt has been modified to compile code with pthread.
