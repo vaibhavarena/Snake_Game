@@ -87,11 +87,11 @@ void Renderer::Render(Snake snake, SDL_Point const &food) {
   block.h = screen_height / grid_height;
 
   // Change 4 : Use concurrency to execute the below functions(Minor changes in cmake file to include pthread)
-  std::future<void> backFtr = std::async(&Renderer::renderBackground, this);
-  backFtr.wait();
+  std::future<void> backFtr = std::async(std::launch::deferred, &Renderer::renderBackground, this);
+  std::future<void> foodFtr = std::async(std::launch::deferred, &Renderer::renderFood, this, std::ref(food), std::ref(block));
+  std::future<void> snakeFtr = std::async(std::launch::deferred, &Renderer::renderSnake, this, snake, std::ref(block));
 
-  std::future<void> foodFtr = std::async(&Renderer::renderFood, this, std::ref(food), std::ref(block));
-  std::future<void> snakeFtr = std::async(&Renderer::renderSnake, this, snake, std::ref(block));
+  backFtr.wait();
   foodFtr.wait();
   snakeFtr.wait();
 
