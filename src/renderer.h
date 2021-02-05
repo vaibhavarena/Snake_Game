@@ -2,6 +2,7 @@
 #define RENDERER_H
 
 #include <vector>
+#include <mutex>
 #include "SDL.h"
 #include "snake.h"
 
@@ -25,6 +26,8 @@ class Renderer {
   SDL_Window *sdl_window;
   SDL_Renderer *sdl_renderer;
 
+  // Use mutex to prevent parallel access to sdl renderer
+  std::mutex _mutex;
   const std::size_t screen_width;
   const std::size_t screen_height;
   const std::size_t grid_width;

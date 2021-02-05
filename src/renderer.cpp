@@ -41,22 +41,27 @@ Renderer::~Renderer() {
 
 void Renderer::renderBackground()
 {
+  _mutex.lock();
   // Clear screen
   SDL_SetRenderDrawColor(sdl_renderer, 0x1E, 0x1E, 0x1E, 0xFF);
   SDL_RenderClear(sdl_renderer);
+  _mutex.unlock();
 }
 
 void Renderer::renderFood(SDL_Point const &food, SDL_Rect &block)
 {
+  _mutex.lock();
   // Render food
   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xCC, 0x00, 0xFF);
   block.x = food.x * block.w;
   block.y = food.y * block.h;
   SDL_RenderFillRect(sdl_renderer, &block);
+  _mutex.unlock();
 }
 
 void Renderer::renderSnake(Snake snake, SDL_Rect &block)
 {
+  _mutex.lock();
   // Change 5 : Change snake body dimension 
   SDL_Rect snakeDim;
   snakeDim.w = block.w - 0.1;
@@ -79,6 +84,7 @@ void Renderer::renderSnake(Snake snake, SDL_Rect &block)
     SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
   }
   SDL_RenderFillRect(sdl_renderer, &block);
+  _mutex.unlock();
 }
 
 void Renderer::Render(Snake snake, SDL_Point const &food) {
